@@ -9,7 +9,7 @@ class LinkedList<T> {
     private _head: LinkedNode<T> | null = null;
 
     [Symbol.iterator]() : Iterator<LinkedNode<T>> {
-        let nodePointer: LinkedNode<T> | null = this._head;
+        let nodePointer: LinkedNode<T> | null = this._head
         
         return {
             next(): IteratorResult<LinkedNode<T>> {
@@ -79,3 +79,4 @@ class LinkedList<T> {
 }
 
 export default LinkedList
+export {LinkedNode}
