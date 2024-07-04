@@ -8,11 +8,11 @@ llObject.push(2)
 llObject.push(3)
 llObject.push(4)
 
+const objs = llObject.find(value => {
+    return true
+})
 
-for (let node of llObject) {
-    console.log(node)
-}
+console.log(objs)
+llObject.pop(objs[3])
 
-console.log(llObject.find(value => {
-    return value % 2 == 0
-}, 1))
+console.log(llObject.find(value => true))

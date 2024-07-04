@@ -44,9 +44,21 @@ class LinkedList<T> {
             nodePointer = nodePointer.next
         }
 
-        console.log(nodePointer.value)
-
         nodePointer.next = node
+    }
+
+    pop(node : LinkedNode<T>): void {
+        if (this._head == node) {
+            this._head = this._head.next
+            return
+        }
+
+        for (let currentNode of this) {
+            if (currentNode.next != node) continue;
+
+            currentNode.next = currentNode.next.next
+            return
+        }
     }
 
     find(predictFn: LinkedPredictFunction<T>, limit?: number): LinkedNode<T>[] {
