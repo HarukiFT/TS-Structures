@@ -3,6 +3,8 @@ type LinkedNode<T> = {
     next: LinkedNode<T> | null
 }
 
+type LinkedPredictFunction<T> = (value: T) => boolean
+
 class LinkedList<T> {
     private _head: LinkedNode<T> | null = null
 
@@ -22,6 +24,29 @@ class LinkedList<T> {
         console.log(nodePointer.value)
 
         nodePointer.next = node
+    }
+
+    [Symbol.iterator]() : Iterator<LinkedNode<T>> {
+        let nodePointer: LinkedNode<T> | null = this._head;
+        
+        return {
+            next(): IteratorResult<LinkedNode<T>> {
+                if (!nodePointer) {
+                    return {
+                        done: true,
+                        value: undefined as any
+                    }
+                } else {
+                    const currentNode = nodePointer
+                    nodePointer = nodePointer.next
+
+                    return {
+                        done: false,
+                        value: currentNode
+                    }
+                }
+            }
+        }
     }
 }
 
